@@ -101,8 +101,29 @@
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          
-          
+        //draw image onto second canvas
+        context2.drawImage(img,0,0, canvas2.width,canvas2.height);
+        //get data for pixels
+        var imageData = context2.getImageData(0, 0, canvas2.width, canvas2.height);
+        var data = imageData.data;
+// Loop through pixels
+for (var i = 0; i < data.length; i += 4) {
+
+  var red = data[i];
+  var green = data[i + 1];
+  var blue = data[i + 2];
+
+  // keep only blue channel
+  data[i] = 0;
+  data[i + 1] = 0;
+  data[i + 2] = blue;
+}
+
+// put modified image back
+context2.putImageData(imageData, 0, 0);
+
+console.log("Blue filter complete");
+      
           
           
         } // end of img.onload
