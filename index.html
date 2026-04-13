@@ -109,13 +109,12 @@
         //get data for pixels
         var imageData = context2.getImageData(0, 0, canvas2.width, canvas2.height);
         var data = imageData.data;
-// Loop through pixels
 for (var i = 0; i < data.length; i += 4) {
 
   // keep only blue channel
-  data[i] = 0;
-  data[i + 1] = 0;
-  data[i + 2] = blue;
+  data[i] = 0;       // red off
+  data[i + 1] = 0;   // green off
+  // blue is already stored in data[i+2], so we leave it alone
 }
 
 // put modified image back
